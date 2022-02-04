@@ -3,6 +3,7 @@
 //  Small Calcy
 //
 //  Created by Saransh Agarwal on 03/02/22.
+// for ios project
 //
 
 import Foundation
