@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var calScreenViewString: UILabel!
     
+    @IBOutlet weak var historyButton: UIButton!
     @IBOutlet weak var historyTable: UITableView!
     
     var calcy : Calculator = Calculator()
@@ -28,7 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        let cell = UITableViewCell()
         cell.textLabel?.text = calcy.calculationHistory[indexPath.row]
         return cell
     }
@@ -49,6 +50,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        historyTable.isHidden = true
         self.calScreenViewString.text = ""
     }
     
@@ -64,8 +66,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func showHistoryClicked(_ sender: Any) {
         calcy.printAllHistoryOnConsole()
-        historyTable.reloadData()
-        
+//        historyTable.reloadData()
+        if(historyTable.isHidden){
+            
+            
+            historyButton.setTitle("Advanced - Show History", for: UIControl.State.normal)
+            historyTable.isHidden = false
+        }else{
+            historyTable.isHidden = true
+            historyButton.setTitle("Standard - No History", for: UIControl.State.normal)
+        }
         
         
         
@@ -83,6 +93,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }else{
             lastOperator = "="
         }
+        historyTable.reloadData()
         
     }
     

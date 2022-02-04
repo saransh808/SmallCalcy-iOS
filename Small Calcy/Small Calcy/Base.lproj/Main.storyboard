@@ -218,7 +218,7 @@
                                 <rect key="frame" x="20" y="447" width="374" height="46"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Show History"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Standard - No History"/>
                                 <connections>
                                     <action selector="showHistoryClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KTl-XU-BFO"/>
                                 </connections>
@@ -257,6 +257,7 @@
                     </view>
                     <connections>
                         <outlet property="calScreenViewString" destination="VIH-AT-RBV" id="uGf-Xy-KE5"/>
+                        <outlet property="historyButton" destination="JkK-Yi-WnZ" id="ypp-VC-6VR"/>
                         <outlet property="historyTable" destination="1gc-zE-Kep" id="bQS-ey-0hc"/>
                     </connections>
                 </viewController>
