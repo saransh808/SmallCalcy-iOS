@@ -7,15 +7,45 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    
     
     
     @IBOutlet weak var calScreenViewString: UILabel!
     
+    @IBOutlet weak var historyTable: UITableView!
     
     var calcy : Calculator = Calculator()
     var lastOperator : String = ""
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(calcy.calculationHistory.count)
+        return calcy.calculationHistory.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        cell.textLabel?.text = calcy.calculationHistory[indexPath.row]
+        return cell
+    }
+    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +64,11 @@ class ViewController: UIViewController {
     
     @IBAction func showHistoryClicked(_ sender: Any) {
         calcy.printAllHistoryOnConsole()
+        historyTable.reloadData()
+        
+        
+        
+        
     }
     @IBAction func inputAndCalculate(_ sender: Any) {
         let op : String = ((sender as! UIButton).titleLabel?.text)!
